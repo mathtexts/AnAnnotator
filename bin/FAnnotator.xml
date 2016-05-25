@@ -1,0 +1,83 @@
+<taeDescription xmlns="http://uima.apache.org/resourceSpecifier">
+<frameworkImplementation>org.apache.uima.cpp</frameworkImplementation>
+    <primitive>true</primitive>
+    <annotatorImplementationName>FAnnotator</annotatorImplementationName>
+
+
+    <analysisEngineMetaData>
+
+        <name>FAnnotator</name>
+        <description>Detects coreferences in </description>
+        <version>1.0</version>
+        <vendor>Part</vendor>
+
+        <configurationParameters> <!--Параметры аннотатора -->
+            <configurationParameter>
+                <name>Parameter</name>
+                <description>Number for F-measure</description>
+                <type>String</type>
+                <multiValued>false</multiValued>
+                <mandatory>true</mandatory>
+            </configurationParameter>
+        </configurationParameters>
+
+        <configurationParameterSettings>
+          <nameValuePair>
+            <name>Parameter</name>
+            <value>
+              <string>1</string>
+            </value>
+          </nameValuePair>
+        </configurationParameterSettings>
+ 
+
+        <typeSystemDescription> <!-- Описание типов -->
+            <types>
+                <typeDescription>
+                    <name>org.PrecisionRecallPair</name>
+                    <description></description>
+                    <supertypeName>uima.tcas.Annotation</supertypeName>
+                    <features> 
+                        <featureDescription>
+                            <name>Precision</name>
+                            <description></description>
+                            <rangeTypeName>uima.cas.Double</rangeTypeName>
+                        </featureDescription>
+                        <featureDescription>
+                            <name>Recall</name>
+                            <description></description>
+                            <rangeTypeName>uima.cas.Double</rangeTypeName>
+                        </featureDescription>
+                    </features>
+                </typeDescription>
+                <typeDescription>
+                    <name>org.FMeasure</name>
+                    <description></description>
+                    <supertypeName>uima.tcas.Annotation</supertypeName>
+                    <features> 
+                        <featureDescription>
+                            <name>Value</name>
+                            <description></description>
+                            <rangeTypeName>uima.cas.Double</rangeTypeName>
+                        </featureDescription>
+                    </features>
+                </typeDescription>
+            </types>
+        </typeSystemDescription>
+
+
+
+        <capabilities> <!-- Входовыход -->
+            <capability>
+                <inputs>
+                        <type>org.PrecisionRecallPair</type>
+                </inputs>
+                <outputs>
+                        <type>org.FMeasure</type>
+                </outputs>
+            </capability>
+        </capabilities>
+
+
+    </analysisEngineMetaData>
+</taeDescription>
